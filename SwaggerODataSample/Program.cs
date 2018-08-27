@@ -1,24 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-
-namespace SwaggerODataSample
+﻿namespace Microsoft.Examples
 {
+    using Microsoft.AspNetCore;
+    using Microsoft.AspNetCore.Hosting;
+
+    /// <summary>
+    /// Represents the current application.
+    /// </summary>
     public class Program
     {
-        public static void Main(string[] args)
-        {
-            CreateWebHostBuilder(args).Build().Run();
-        }
+        /// <summary>
+        /// The main entry point to the application.
+        /// </summary>
+        /// <param name="args">The arguments provides at start-up, if any.</param>
+        public static void Main( string[] args ) => BuildWebHost( args ).Run();
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        /// <summary>
+        /// Builds a new web host for the application.
+        /// </summary>
+        /// <param name="args">The command-line arguments, if any.</param>
+        /// <returns>A newly constructed <see cref="IWebHost">web host</see>.</returns>
+        public static IWebHost BuildWebHost( string[] args ) =>
+            WebHost.CreateDefaultBuilder( args )
+                .UseStartup<Startup>()
+                .Build();
     }
 }
